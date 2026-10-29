@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: red
+    
+}
+
+#Main-container {
+    background-color: aliceblue;
+    height: auto;
+    padding: 20px 30px;        
+    border-radius: 8px;        
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 432px;
+}
+
+#Heading-section {
+    margin-top: 10px;
+}

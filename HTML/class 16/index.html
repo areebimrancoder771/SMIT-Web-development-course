@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CalliGrew | Art by Areesha Imran</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream:#fbf7f4;
+  --pink:#f1c8d7;
+  --lavender:#d8c9ef;
+  --mint:#c9e8dc;
+  --yellow:#f6e8ae;
+  --ink:#25202a;
+  --muted:#77717c;
+}
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink)}
+a {text-decoration:none;color:inherit}
+.container {width:min(1150px,92%);margin:auto}
+.topbar {
+  text-align:center;padding:9px;
+  background:linear-gradient(90deg,var(--pink),var(--lavender),var(--mint),var(--yellow));
+  font-size:12px;letter-spacing:2px
+}
+header {position:sticky;top:0;background:#fbf7f4ed;backdrop-filter:blur(12px);z-index:10;border-bottom:1px solid #ddd5df}
+nav {display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:20px}
+.logo {font:700 29px 'Playfair Display',serif}
+.logo span {color:#9876b4}
+.navlinks {display:flex;align-items:center;gap:25px;font-size:13px}
+.navlinks a:hover {color:#9876b4}
+.btn {
+  display:inline-block;padding:13px 22px;border-radius:30px;
+  background:var(--ink);color:white;font-weight:700;font-size:13px;
+  transition:.2s;border:0;cursor:pointer
+}
+.btn:hover {transform:translateY(-3px)}
+.btn-light {background:transparent;color:var(--ink);border:1px solid #ddd}
+.menu {display:none;background:none;border:0;font-size:25px;cursor:pointer}
+.hero {padding:85px 0 70px}
+.hero-grid {display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.eyebrow {font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#9876b4;font-weight:bold}
+h1 {font:600 clamp(48px,6vw,80px)/1.05 'Playfair Display',serif;margin:20px 0}
+h1 em {font:normal 1.05em 'Parisienne',cursive;color:#9876b4}
+.hero p,.section-intro {color:var(--muted);line-height:1.9;font-size:15px}
+.actions {display:flex;gap:12px;flex-wrap:wrap;margin:27px 0}
+.art-showcase {
+  min-height:420px;display:grid;place-items:center;position:relative;
+  background:radial-gradient(circle,var(--lavender),var(--pink),var(--mint),var(--yellow));
+  border-radius:48% 52% 45% 55%/50% 42% 58% 50%
+}
+.art-frame {width:65%;aspect-ratio:3/4;padding:13px;background:#fffdf9;box-shadow:0 25px 55px #33243c38;transform:rotate(4deg)}
+.art-inner {
+  height:100%;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;border:1px solid #e4d8c8;
+  background:radial-gradient(circle at top left,#f5dbe4,transparent 45%),radial-gradient(circle at bottom right,#d7e9df,transparent 45%),#fcf7ec
+}
+.script {font:clamp(35px,5vw,62px) 'Parisienne',cursive}
+.art-inner small {font-size:9px;letter-spacing:3px;margin-top:18px}
+.float {
+  position:absolute;background:#fffdf0e8;padding:14px 18px;
+  border-radius:12px;box-shadow:0 10px 30px #33243c20;font-size:12px
+}
+.float strong {display:block;font:18px 'Playfair Display',serif;margin-bottom:4px}
+.float.one {top:45px;left:0;transform:rotate(-5deg)}
+.float.two {bottom:40px;right:0;transform:rotate(4deg)}
+section {padding:80px 0}
+.gallery-section {background:#fffdfb;border-block:1px solid #e5dfe6}
+.section-head {display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:35px}
+h2 {font:600 clamp(32px,4vw,48px)/1.15 'Playfair Display',serif;margin-top:12px}
+.section-intro {max-width:420px;font-size:14px}
+.gallery {display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.art-card {min-width:0}
+.art-image {
+  height:auto;aspect-ratio:4/4.6;border-radius:8px;overflow:hidden;
+  display:grid;place-items:center;padding:15px;position:relative
+}
+.art-image img {position:absolute;width:100%;height:100%;inset:0;object-fit:cover}
+.art-image .placeholder {font:40px/1.2 'Parisienne',cursive;text-align:center;color:#352b3b}
+.placeholder small {display:block;font:9px 'DM Sans',sans-serif;letter-spacing:2px;margin-top:15px;text-transform:uppercase}
+.pink {background:linear-gradient(140deg,#f0cbd9,#e5d7f4)}
+.green {background:linear-gradient(140deg,#d4eee2,#f6e8b4)}
+.lilac {background:linear-gradient(140deg,#d8c8ed,#f8e9d8)}
+.cream {background:linear-gradient(140deg,#f5e9ce,#f1d6dd)}
+.blue {background:linear-gradient(140deg,#cfe4ed,#ded2f0)}
+.peach {background:linear-gradient(140deg,#f4d2bd,#f0ddeb)}
+.art-info {padding:14px 2px}
+.art-info h3 {font:600 20px 'Playfair Display',serif;margin-bottom:5px}
+.art-info p {font-size:12px;color:var(--muted)}
+.about-grid {display:grid;grid-template-columns:.85fr 1.15fr;gap:65px;align-items:center}
+.about-art {
+  min-height:340px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--pink),var(--lavender),var(--mint))
+}
+.about-circle {
+  width:220px;height:220px;border-radius:50%;background:#fffdf0dd;
+  display:flex;flex-direction:column;align-items:center;justify-content:center
+}
+.about-circle span {font:48px 'Parisienne',cursive}
+.about-circle small {letter-spacing:2px;text-transform:uppercase;margin:8px}
+.about-copy h2 {margin-bottom:20px}
+.about-copy p {color:var(--muted);font-size:14px;line-height:2;margin-bottom:15px}
+.signature {font:34px 'Parisienne',cursive;color:#9876b4;margin-top:18px}
+.tags {display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.tags span {border:1px solid #ddd;padding:9px 13px;border-radius:30px;font-size:11px}
+.custom {background:var(--ink);color:white}
+.custom-inner {display:flex;justify-content:space-between;align-items:center;gap:30px}
+.custom h2 {margin:12px 0}
+.custom p {color:#d2cbd7;line-height:1.8;max-width:540px;font-size:14px;margin-top:12px}
+.custom .btn {background:linear-gradient(100deg,var(--pink),var(--lavender),var(--mint));color:var(--ink);white-space:nowrap}
+.contact-grid {display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.contact-card {background:#fffdfb;border:1px solid #e5dfe6;border-radius:12px;padding:28px}
+.contact-card h3 {font:24px 'Playfair Display',serif;margin-bottom:18px}
+.contact-card p {font-size:14px;color:var(--muted);line-height:1.8}
+.contact-row {padding:13px 0;border-bottom:1px solid #eee8ef;font-size:14px}
+.contact-row:last-child {border:0}
+.contact-row small {display:block;color:var(--muted);margin-bottom:5px;font-size:11px}
+.socials {display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.social {border:1px solid #ddd;padding:11px 15px;border-radius:30px;font-size:12px;font-weight:bold}
+.social:hover {background:var(--lavender)}
+footer {padding:25px 0;border-top:1px solid #e5dfe6;color:var(--muted);font-size:12px}
+.footer-inner {display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.footer-logo {font:20px 'Playfair Display',serif;color:var(--ink)}
+.whatsapp {
+  position:fixed;right:18px;bottom:18px;background:#218653;color:white;
+  border-radius:30px;padding:14px 18px;font-size:13px;font-weight:bold;
+  box-shadow:0 8px 25px #0002;z-index:20
+}
+@media(max-width:800px) {
+  .navlinks {display:none;position:absolute;top:76px;left:4%;width:92%;padding:22px;background:#fff;border:1px solid #ddd; border-radius:12px;flex-direction:column;align-items:flex-start}
+  .navlinks.open {display:flex}
+  nav>.btn {display:none}
+  .menu {display:block}
+  .hero-grid,.about-grid {grid-template-columns:1fr;gap:35px}
+  .hero {padding-top:50px}
+  .hero-copy {text-align:center}
+  .hero-grid>div:first-child {text-align:center}
+  .actions {justify-content:center}
+  .art-showcase {min-height:350px}
+  .section-head {align-items:flex-start;flex-direction:column}
+  .gallery {grid-template-columns:repeat(2,1fr);gap:14px}
+  .custom-inner {align-items:flex-start;flex-direction:column}
+}
+@media(max-width:520px) {
+  section {padding:58px 0}
+  .gallery {gap:12px}
+  .art-image .placeholder {font-size:30px}
+  .art-info h3 {font-size:16px}
+  .contact-grid {grid-template-columns:1fr}
+  .art-showcase {min-height:310px}
+  .float {font-size:10px;padding:10px}
+  .float.one {top:25px}
+  .float.two {bottom:20px}
+}
+</style>
+</head>
+
+<body>
+<div class="topbar">ART MADE WITH PATIENCE, PASSION & A LITTLE MAGIC</div>
+
+<header>
+  <nav class="container">
+    <a class="logo" href="#home">Calli<span>Grew</span></a>
+    <div class="navlinks" id="navlinks">
+      <a href="#home">Home</a>
+      <a href="#collection">Art Collection</a>
+      <a href="#about">About Artist</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="btn" href="#collection">Explore Art ↗</a>
+    <button class="menu" id="menu" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">A little art, a lot of heart</div>
+      <h1>Where letters<br>become <em>art.</em></h1>
+      <p class="hero-copy">Welcome to CalliGrew — a creative space for expressive calligraphy, meaningful canvas art and handcrafted pieces made to bring beauty into your world.</p>
+      <div class="actions">
+        <a class="btn" href="#collection">Discover the Collection ↗</a>
+        <a class="btn btn-light" href="#about">Meet the Artist</a>
+      </div>
+      <p>Thoughtfully created by <strong>Areesha Imran</strong> ✦</p>
+    </div>
+    <div class="art-showcase">
+      <div class="float one"><strong>Made by hand</strong>Created with intention</div>
+      <div class="art-frame">
+        <div class="art-inner">
+          <div class="script">CalliGrew</div>
+          <small>ART BY AREESHA IMRAN</small>
+        </div>
+      </div>
+      <div class="float two"><strong>Art that speaks</strong>Beauty in every detail ✦</div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="collection">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">The Gallery</div><h2>Explore the Art Collection</h2></div>
+      <p class="section-intro">Every piece has its own story. Add your own artwork photos to make this collection truly yours.</p>
+    </div>
+
+    <div class="gallery">
+      <!-- Replace each placeholder with your own image.
+           Example: <img src="images/art1.jpg" alt="My calligraphy artwork"> -->
+      <article class="art-card">
+        <div class="art-image pink"><div class="placeholder">Letters<br>with soul<small>Calligraphy</small></div></div>
+        <div class="art-info"><h3>Calligraphy</h3><p>Grace in every stroke</p></div>
+      </article>
+      <article class="art-card">
+        <div class="art-image green"><div class="placeholder">A little<br>serenity<small>Islamic Art</small></div></div>
+        <div class="art-info"><h3>Islamic Art</h3><p>Meaningful, timeless pieces</p></div>
+      </article>
+      <article class="art-card">
+        <div class="art-image lilac"><div class="placeholder">Made for<br>your space<small>Canvas Art</small></div></div>
+        <div class="art-info"><h3>Canvas Art</h3><p>Art that feels like home</p></div>
+      </article>
+      <article class="art-card">
+        <div class="art-image cream"><div class="placeholder">Your words,<br>beautifully told<small>Custom Art</small></div></div>
+        <div class="art-info"><h3>Custom Artwork</h3><p>Created just for you</p></div>
+      </article>
+      <article class="art-card">
+        <div class="art-image blue"><div class="placeholder">Small details<br>big meaning<small>Art & Decor</small></div></div>
+        <div class="art-info"><h3>Art & Décor</h3><p>Little details, lasting charm</p></div>
+      </article>
+      <article class="art-card">
+        <div class="art-image peach"><div class="placeholder">A gift made<br>with love<small>Gift Collection</small></div></div>
+        <div class="art-info"><h3>Art Gifts</h3><p>Thoughtful gifts for every moment</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-art">
+      <div class="about-circle">
+        <span>CalliGrew</span>
+        <small>Artistry by</small>
+        <strong>Areesha Imran</strong>
+      </div>
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow">Behind the Brush</div>
+      <h2>Art is more than what you see.</h2>
+      <p>I'm <strong>Areesha Imran</strong>, the artist behind CalliGrew. This is my space to explore creativity through calligraphy, canvas and thoughtful handmade art.</p>
+      <p>My goal is to create pieces that feel personal, beautiful and full of meaning. Whether you want a statement piece for your home or a custom gift for someone special, let's turn your idea into art.</p>
+      <div class="signature">Areesha Imran</div>
+      <div class="tags"><span>Original Creativity</span><span>Made with Care</span><span>Custom Requests Welcome</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="custom">
+  <div class="container custom-inner">
+    <div>
+      <div class="eyebrow">Have an idea?</div>
+      <h2>Let's make something<br>meaningful together.</h2>
+      <p>Tell us what you're imagining — a name, a quote, a canvas or a special gift. Let's create something uniquely yours.</p>
+    </div>
+    <a class="btn" href="https://wa.me/923300329909?text=Assalam-o-Alaikum%2C%20I%20am%20interested%20in%20CalliGrew%20artwork." target="_blank" rel="noopener">Request Custom Art ↗</a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">Say Hello</div><h2>Let's Connect.</h2></div>
+      <p class="section-intro">For artwork enquiries, custom orders and collaborations, reach out through our contact details or social pages.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Contact Details</h3>
+        <div class="contact-row"><small>PHONE / WHATSAPP</small><strong><a href="https://wa.me/923300329909" target="_blank" rel="noopener">03300329909</a></strong></div>
+        <div class="contact-row"><small>ARTIST</small><strong>Areesha Imran</strong></div>
+        <div class="contact-row"><small>MANAGER</small><strong>Areeb Imran</strong></div>
+      </div>
+      <div class="contact-card">
+        <h3>Follow CalliGrew</h3>
+        <p>Discover new artwork, creative videos and behind-the-scenes moments on our social channels.</p>
+        <div class="socials">
+          <a class="social" href="https://www.youtube.com/channel/UCfrd2mQZhO7TUWaKWUXDBTA" target="_blank" rel="noopener">▶ YouTube</a>
+          <a class="social" href="https://www.instagram.com/calligrew/" target="_blank" rel="noopener">◎ Instagram</a>
+          <a class="social" href="https://wa.me/923300329909" target="_blank" rel="noopener">☏ WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a class="footer-logo" href="#home">CalliGrew ✦</a>
+    <span>© <span id="year"></span> CalliGrew by Areesha Imran</span>
+    <a href="#home">Back to top ↑</a>
+  </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/923300329909" target="_blank" rel="noopener">WhatsApp ↗</a>
+
+<script>
+const menu = document.getElementById('menu');
+const navlinks = document.getElementById('navlinks');
+
+menu.addEventListener('click', () => {
+  navlinks.classList.toggle('open');
+  menu.textContent = navlinks.classList.contains('open') ? '×' : '☰';
+});
+
+navlinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navlinks.classList.remove('open');
+    menu.textContent = '☰';
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
